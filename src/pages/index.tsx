@@ -40,7 +40,7 @@ const Content: React.FC = () => {
 
   const createTopic = api.topic.create.useMutation({
     onSuccess: () => {
-      refreshTopics();
+      void refreshTopics();
     },
   });
 
@@ -55,13 +55,13 @@ const Content: React.FC = () => {
 
   const createNote = api.note.create.useMutation({
     onSuccess: () => {
-      refreshNotes();
+      void refreshNotes();
     },
   });
 
   const deleteNote = api.note.delete.useMutation({
     onSuccess: () => {
-      refreshNotes();
+      void refreshNotes();
     },
   });
 
