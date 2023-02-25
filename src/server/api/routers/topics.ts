@@ -1,0 +1,28 @@
+import {z} from "zod";
+
+import {
+    createTRPCRouter,
+    protectedProcedure,
+} from "~/server/api/trpc";
+
+export const topicsRouter = createTRPCRouter({
+    getAll: protectedProcedure
+    .query(({ctx, input}) => {
+        return ctx.prisma.topic.findMany({
+            where: {
+                userId: ctx.session.user.id,
+            },
+        });
+    }),
+    create: protectedProcedure
+    .input(z.object({title: z.string()}))
+    .mutation(({ctx, input}) => {
+        return ctx.prisma.topic.create({
+            data: {
+                userId: ctx.session.user.id,
+                title: input.title,
+            },
+        });
+    }),
+});
+    

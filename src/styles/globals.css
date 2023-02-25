@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cm-scroller,
+.cm-gutters,
+.cm-gutterElement,
+.cm-gutterElement,
+.cm-activeLineGutter {
+  background-color: #2a303c !important;
+}
